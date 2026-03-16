@@ -12,7 +12,8 @@ namespace WpfSmartDesigner.VsExtension
     /// </summary>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(PackageGuidString)]
-    [ProvideMenuResource("Menus.ctmenu", 1)]
+    // Temporarily remove menu resource
+    // [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideAutoLoad(Microsoft.VisualStudio.Shell.Interop.UIContextGuids.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
     public sealed class WpfSmartDesignerPackage : AsyncPackage
     {
@@ -52,8 +53,8 @@ namespace WpfSmartDesigner.VsExtension
             // Initialize error listener
             await ErrorListenerService.InitializeAsync(this);
 
-            // Initialize command handlers
-            await Commands.AnalyzeCommand.InitializeAsync(this);
+            // Initialize command handlers - TEMPORARILY DISABLED
+            // await Commands.AnalyzeCommand.InitializeAsync(this);
 
             System.Diagnostics.Debug.WriteLine("WpfSmartDesigner: InitializeAsync completed");
         }

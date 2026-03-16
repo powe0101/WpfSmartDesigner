@@ -31,11 +31,14 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.8.0" />
   </ItemGroup>
 
+  <!-- Temporarily comment out VSCT for testing -->
+  <!--
   <ItemGroup>
     <VSCTCompile Include="VSCommandTable.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
   </ItemGroup>
+  -->
 
   <ItemGroup>
     <None Include="Resources\**\*" />
