@@ -27,6 +27,7 @@ namespace WpfSmartDesigner.VsExtension
         public WpfSmartDesignerPackage()
         {
             // Package initialization logic
+            System.Diagnostics.Debug.WriteLine("WpfSmartDesigner: Package constructor called");
         }
 
         #region Package Members
@@ -40,15 +41,21 @@ namespace WpfSmartDesigner.VsExtension
         /// <returns>A task representing the async work of package initialization, or an already completed task if there is none. Do not return null from this method.</returns>
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
+            System.Diagnostics.Debug.WriteLine("WpfSmartDesigner: InitializeAsync started");
+
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
+            System.Diagnostics.Debug.WriteLine("WpfSmartDesigner: Switched to UI thread");
+
             // Initialize error listener
             await ErrorListenerService.InitializeAsync(this);
 
-            // TODO: Initialize command handlers
-            // await AnalyzeCommand.InitializeAsync(this);
+            // Initialize command handlers
+            await Commands.AnalyzeCommand.InitializeAsync(this);
+
+            System.Diagnostics.Debug.WriteLine("WpfSmartDesigner: InitializeAsync completed");
         }
 
         #endregion

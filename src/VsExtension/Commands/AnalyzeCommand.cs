@@ -59,6 +59,8 @@ namespace WpfSmartDesigner.VsExtension.Commands
         /// <param name="package">Owner package, not null.</param>
         public static async Task InitializeAsync(AsyncPackage package)
         {
+            System.Diagnostics.Debug.WriteLine("WpfSmartDesigner: AnalyzeCommand.InitializeAsync called");
+
             // Switch to the main thread - the call to AddCommand in AnalyzeCommand's constructor requires
             // the UI thread.
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
@@ -67,6 +69,8 @@ namespace WpfSmartDesigner.VsExtension.Commands
                 ?? throw new InvalidOperationException("Cannot get OleMenuCommandService");
 
             Instance = new AnalyzeCommand(package, commandService);
+
+            System.Diagnostics.Debug.WriteLine("WpfSmartDesigner: AnalyzeCommand initialized successfully");
         }
 
         /// <summary>
