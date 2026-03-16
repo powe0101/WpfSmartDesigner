@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.Shell.TableManager;
 
 namespace WpfSmartDesigner.VsExtension
 {
@@ -14,7 +13,6 @@ namespace WpfSmartDesigner.VsExtension
     {
         private static ErrorListenerService? instance;
         private IVsErrorList? errorList;
-        private ITableManager? tableManager;
 
         /// <summary>
         /// Gets the singleton instance of the ErrorListenerService.
@@ -39,23 +37,10 @@ namespace WpfSmartDesigner.VsExtension
             // Get the Error List service
             errorList = await package.GetServiceAsync(typeof(SVsErrorList)) as IVsErrorList;
 
-            // Get the Table Manager for error list
-            tableManager = await package.GetServiceAsync(typeof(SVsErrorList)) as ITableManager;
-
-            if (tableManager != null)
-            {
-                // Subscribe to error list changes
-                SubscribeToErrorListChanges();
-            }
-
             System.Diagnostics.Debug.WriteLine("WpfSmartDesigner: Error Listener initialized");
-        }
-
-        private void SubscribeToErrorListChanges()
-        {
-            // TODO: Implement ITableDataSink to receive error notifications
-            // This will be expanded to listen to specific error types (XAML, build errors)
-            System.Diagnostics.Debug.WriteLine("WpfSmartDesigner: Subscribed to error list changes");
+            
+            // TODO: Implement actual error list monitoring
+            // For now, this is a placeholder that will be expanded later
         }
 
         /// <summary>
