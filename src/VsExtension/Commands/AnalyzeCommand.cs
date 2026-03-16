@@ -39,7 +39,7 @@ namespace WpfSmartDesigner.VsExtension.Commands
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
             var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(this.Execute, menuCommandID);
+            var menuItem = new OleMenuCommand(this.Execute, menuCommandID);
             commandService.AddCommand(menuItem);
         }
 
@@ -76,7 +76,7 @@ namespace WpfSmartDesigner.VsExtension.Commands
         /// </summary>
         /// <param name="sender">Event sender.</param>
         /// <param name="e">Event args.</param>
-        private void Execute(object sender, EventArgs e)
+        private void Execute(object? sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 

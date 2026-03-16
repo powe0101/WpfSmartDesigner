@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <RootNamespace>WpfSmartDesigner.VsExtension</RootNamespace>
     <AssemblyName>WpfSmartDesigner.VsExtension</AssemblyName>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
@@ -13,8 +13,8 @@
     <StartAction>Program</StartAction>
     <StartProgram Condition="'$(DevEnvDir)' != ''">$(DevEnvDir)devenv.exe</StartProgram>
     <StartArguments>/rootsuffix Exp</StartArguments>
-    <UseWpf>true</UseWpf>
     <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
